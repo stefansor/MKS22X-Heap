@@ -37,8 +37,13 @@ public class MyHeap{
 
 
   //We will discuss this today
-  //public static void heapify(int[])
-      //- convert the array into a valid heap. [ should be O(n) ]
+  public static void heapify(int[] data){
+    //- convert the array into a valid heap. [ should be O(n) ]
+    for (int i = data.length / 2; i >= 0; i--) {
+      pushDown(data, data.length, i);
+    }
+  }
+
 
   //public static void heapsort(int[])
       //- sort the array [ should be O(nlogn) ] :
@@ -59,6 +64,14 @@ public class MyHeap{
     //nothing should happen as all of the elements are already ordered
     //with the root as the max
     //edited the array to have an error in index 2 and pushDown should correct it
+
+    //testing heapify
+    int[] yea = new int[]{
+      34, 3, 4,5, 23, 5,6, 67, 24
+    };
+    HeapPrinter.print(yea);
+    heapify(yea);
+    HeapPrinter.print(yea);
 
   }
 
