@@ -19,7 +19,11 @@ public class MyHeap{
       }
     }
     else if(2 * index + 1 < size){
-      
+      if(n < data[2 * index + 1]){
+        data[index] = data[2 * index + 1];
+        data[2 * index + 1] = data[index];
+        pushDown(data, size, 2 * index + 1);
+      }
     }
   }
        //- size  is the number of elements in the data array.
@@ -27,18 +31,35 @@ public class MyHeap{
        //- precondition: index is between 0 and size-1 inclusive
        //- precondition: size is between 0 and data.length-1 inclusive.
 
-  private static void pushUp(int[]data,int index)
+  //private static void pushUp(int[]data,int index)
        //- push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
        //- precondition: index is between 0 and data.length-1 inclusive.
 
 
-  //We will discuss this today:
-  public static void heapify(int[])
+  //We will discuss this today
+  //public static void heapify(int[])
       //- convert the array into a valid heap. [ should be O(n) ]
 
-  public static void heapsort(int[])
+  //public static void heapsort(int[])
       //- sort the array [ should be O(nlogn) ] :
       // converting it into a heap
       //removing the largest value n-1 times (remove places at end of the sub-array).
+
+
+
+
+  public static void main(String[] args){
+    int[] ary = new int[]{
+      43, 34, 2, 22, 33, 12, 13, 10, 9
+    };
+    HeapPrinter.print(ary);
+    pushDown(ary, ary.length, 2);
+    System.out.println();
+    HeapPrinter.print(ary);
+    //nothing should happen as all of the elements are already ordered
+    //with the root as the max
+    //edited the array to have an error in index 2 and pushDown should correct it
+
+  }
 
 }
