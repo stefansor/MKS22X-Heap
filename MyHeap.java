@@ -54,7 +54,18 @@ public class MyHeap{
   }
 
 
-  //public static void heapsort(int[])
+//should remove the root of the tree and push the next appropriate max
+//swap max and min then remove the last item (should be the max) then push down root
+//precondition: data is heapified
+  public static int remove(int[] data){
+  
+  }
+
+
+  public static void heapsort(int[] data){
+    heapify(data);
+
+  }
       //- sort the array [ should be O(nlogn) ] :
       // converting it into a heap
       //removing the largest value n-1 times (remove places at end of the sub-array).
