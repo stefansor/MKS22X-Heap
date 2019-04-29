@@ -6,23 +6,23 @@ public class MyHeap{
   //We discussed these 2 methods already:
   private static void pushDown(int[]data, int size, int index){
     int n = data[index];
-    if(2 * index + 2 < size){
-      if(n < data[2 * index + 2] && data[2 * index + 2] > data[2 * index + 1]){
+    if(2 * index + 1 < size){
+      if(n < data[2 * index + 1] && data[2 * index + 1] > data[2 * index + 2]){
+        data[index] = data[2 * index + 1];
+        data[2 * index + 1] = n;
+        pushDown(data, size, 2 * index + 1);
+      }
+      else if(n < data[2 * index + 2]){
         data[index] = data[2 * index + 2];
-        data[2 * index + 2] = data[index];
+        data[2 * index + 2] = n;
         pushDown(data, size, 2 * index + 2);
       }
-      else if(n < data[2 * index + 1]){
-        data[index] = data[2 * index + 1];
-        data[2 * index + 1] = data[index];
-        pushDown(data, size, 2 * index + 1);
-      }
     }
-    else if(2 * index + 1 < size){
-      if(n < data[2 * index + 1]){
-        data[index] = data[2 * index + 1];
-        data[2 * index + 1] = data[index];
-        pushDown(data, size, 2 * index + 1);
+    else if(2 * index + 2 < size){
+      if(n < data[2 * index + 2]){
+        data[index] = data[2 * index + 2];
+        data[2 * index + 2] = n;
+        pushDown(data, size, 2 * index + 2);
       }
     }
   }
