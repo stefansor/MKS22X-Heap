@@ -31,7 +31,16 @@ public class MyHeap{
        //- precondition: index is between 0 and size-1 inclusive
        //- precondition: size is between 0 and data.length-1 inclusive.
 
-  //private static void pushUp(int[]data,int index)
+  private static void pushUp(int[]data,int index){
+    int n = data[index];
+    if((index - 1) / 2 > 0){
+      if(data[(index - 1) / 2] < n){
+        data[index] = data[(index - 1) / 2];
+        data[(index - 1) / 2] = n;
+        pushUp(data, (index - 1) / 2);
+      }
+    }
+  }
        //- push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
        //- precondition: index is between 0 and data.length-1 inclusive.
 
@@ -60,7 +69,12 @@ public class MyHeap{
     HeapPrinter.print(ary);
     pushDown(ary, ary.length, 2);
     System.out.println();
+    System.out.println();
+
     HeapPrinter.print(ary);
+    System.out.println();
+    System.out.println();
+
     //nothing should happen as all of the elements are already ordered
     //with the root as the max
     //edited the array to have an error in index 2 and pushDown should correct it
@@ -70,7 +84,16 @@ public class MyHeap{
       34, 3, 4,5, 23, 5,6, 67, 24
     };
     HeapPrinter.print(yea);
+    pushUp(yea, 6);
+    System.out.println();
+    System.out.println();
+    HeapPrinter.print(yea);
+
+
     heapify(yea);
+    System.out.println();
+    System.out.println();
+
     HeapPrinter.print(yea);
 
   }
