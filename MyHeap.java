@@ -72,7 +72,7 @@ public class MyHeap{
 
   public static void heapsort(int[] data){
     heapify(data);
-    for(int i = 0; i < data.length; i++){
+    for(int i = 0; i <= data.length; i++){
       remove(data, data.length - i);
     }
   }
@@ -84,18 +84,6 @@ public class MyHeap{
 
 
   public static void main(String[] args){
-    int[] ary = new int[]{
-      43, 34, 2, 22, 33, 12, 13, 10, 9
-    };
-    HeapPrinter.print(ary);
-    pushDown(ary, ary.length, 2);
-    System.out.println();
-    System.out.println();
-
-    HeapPrinter.print(ary);
-    System.out.println();
-    System.out.println();
-
     //nothing should happen as all of the elements are already ordered
     //with the root as the max
     //edited the array to have an error in index 2 and pushDown should correct it
@@ -105,23 +93,18 @@ public class MyHeap{
       34, 3, 4,5, 23, 5,6, 67, 24
     };
     HeapPrinter.print(yea);
-    pushUp(yea, 6);
-    System.out.println();
-    System.out.println();
-    HeapPrinter.print(yea);
-
-
     heapify(yea);
     System.out.println();
     System.out.println();
 
     HeapPrinter.print(yea);
     System.out.println();
-    for(int i = 0; i < yea.length; i++){
-      System.out.println(remove(yea, yea.length - i));
-       System.out.println(Arrays.toString(yea));
+    System.out.println(Arrays.toString(yea));
+    System.out.println();
+    System.out.println(remove(yea, yea.length));
+    System.out.println(Arrays.toString(yea));
+    HeapPrinter.print(yea);
 
-    }
     //System.out.println(Arrays.toString(yea));
     //heapsort(yea);
     //System.out.println(Arrays.toString(yea));
