@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MyHeap{
   //node: n
   //parent: (n-1) / 2
@@ -57,14 +59,23 @@ public class MyHeap{
 //should remove the root of the tree and push the next appropriate max
 //swap max and min then remove the last item (should be the max) then push down root
 //precondition: data is heapified
-  public static int remove(int[] data){
-  
+//size is num of elements in array
+//does not actual remove elements of the arry however it does reverse sort
+  public static int remove(int[] data, int size){
+    int num = data[0];
+    data[0] = data[size - 1];
+    data[size - 1] = num;
+    pushDown(data, size - 1, 0);
+    return num;
   }
 
 
   public static void heapsort(int[] data){
     heapify(data);
-
+    int[] ans = new int[data.length];
+    for(int i = 0; i < data.length; i++){
+      ans[ans.length - 1 - i] = remove(data, data.length - i);
+    }
   }
       //- sort the array [ should be O(nlogn) ] :
       // converting it into a heap
@@ -106,6 +117,10 @@ public class MyHeap{
     System.out.println();
 
     HeapPrinter.print(yea);
+    System.out.println();
+    System.out.println(Array.toString(yea));
+    heapsort(yea);
+    System.out.println(Array.toString(yea));
 
   }
 
