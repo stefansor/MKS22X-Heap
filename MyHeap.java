@@ -84,34 +84,40 @@ public class MyHeap{
 
 
 
-  public static void main(String[] args){
-    //nothing should happen as all of the elements are already ordered
-    //with the root as the max
-    //edited the array to have an error in index 2 and pushDown should correct it
+      public static void main(String[] args){
+          System.out.println("Size\t\tMax Value\theap/builtin ratio ");
+        int[]MAX_LIST = {1000000000,500,10};
+        for(int MAX : MAX_LIST){
+          for(int size = 31250; size < 2000001; size*=2){
+            long qtime=0;
+            long btime=0;
+            //average of 5 sorts.
+            for(int trial = 0 ; trial <=5; trial++){
+              int []data1 = new int[size];
+              int []data2 = new int[size];
+              for(int i = 0; i < data1.length; i++){
+                data1[i] = (int)(Math.random()*MAX);
+                data2[i] = data1[i];
+              }
+              long t1,t2;
+              t1 = System.currentTimeMillis();
+              MyHeap.heapsort(data2);
+              t2 = System.currentTimeMillis();
+              qtime += t2 - t1;
+              t1 = System.currentTimeMillis();
+              Arrays.sort(data1);
+              t2 = System.currentTimeMillis();
+              btime+= t2 - t1;
+              if(!Arrays.equals(data1,data2)){
+                System.out.println("FAIL TO SORT!");
+                System.exit(0);
+              }
+            }
+            System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
+          }
+          System.out.println();
+        }
 
-    //testing heapify
-    int[] yea = new int[]{
-      34, 3, 4,5, 23, 5,6, 67, 24
-    };
-    HeapPrinter.print(yea);
-    heapify(yea);
-    System.out.println();
-    System.out.println();
-
-    HeapPrinter.print(yea);
-    System.out.println();
-    System.out.println(Arrays.toString(yea));
-    System.out.println();
-    System.out.println(remove(yea, yea.length));
-    System.out.println(Arrays.toString(yea));
-    HeapPrinter.print(yea);
-
-
-    System.out.println(Arrays.toString(yea));
-    heapsort(yea);
-    System.out.println(Arrays.toString(yea));
-
-
-  }
+        }
 
 }
