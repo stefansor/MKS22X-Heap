@@ -119,7 +119,7 @@ public class MyHeap{
     System.out.println();
     for(int i = 0; i < yea.length; i++){
       System.out.println(remove(yea, yea.length - i));
-      System.out.println(Arrays.toString(yea));
+       System.out.println(Arrays.toString(yea));
 
     }
     //System.out.println(Arrays.toString(yea));
