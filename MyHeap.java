@@ -60,7 +60,7 @@ public class MyHeap{
 //swap max and min then remove the last item (should be the max) then push down root
 //precondition: data is heapified
 //size is num of elements in array
-//does not actual remove elements of the arry however it does reverse sort
+//does not actual remove elements of the arry however it does sort sort of
   public static int remove(int[] data, int size){
     int num = data[0];
     data[0] = data[size - 1];
@@ -72,9 +72,8 @@ public class MyHeap{
 
   public static void heapsort(int[] data){
     heapify(data);
-    int[] ans = new int[data.length];
     for(int i = 0; i < data.length; i++){
-      ans[ans.length - 1 - i] = remove(data, data.length - i);
+      remove(data, data.length - i);
     }
   }
       //- sort the array [ should be O(nlogn) ] :
@@ -118,9 +117,15 @@ public class MyHeap{
 
     HeapPrinter.print(yea);
     System.out.println();
-    System.out.println(Array.toString(yea));
-    heapsort(yea);
-    System.out.println(Array.toString(yea));
+    for(int i = 0; i < yea.length; i++){
+      System.out.println(remove(yea, yea.length - i));
+      System.out.println(Arrays.toString(yea));
+
+    }
+    //System.out.println(Arrays.toString(yea));
+    //heapsort(yea);
+    //System.out.println(Arrays.toString(yea));
+
 
   }
 
